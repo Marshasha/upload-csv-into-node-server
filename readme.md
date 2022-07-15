@@ -13,7 +13,7 @@ b. MongoDB installed on your local machine - https://www.mongodb.com
 3. Let's use Postman to make an HTTP POST request with a CSV file
     - Use `file` key in Body -> form-data
 
-4. Select XXX  file in postman and Send request in postman
+4. Select 62....csv  file in postman and Send request in postman
 
 5. After CSV file upload successfully, we see succsess message in API response
 
