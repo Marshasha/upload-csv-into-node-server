@@ -13,9 +13,9 @@ b. MongoDB installed on your local machine - https://www.mongodb.com
 3. Let's use Postman to make an HTTP POST request with a CSV file
     - Use `file` key in Body -> form-data
 
-4. Select employees.csv file in postman and Send request in postman
+4. Select XXX  file in postman and Send request in postman
 
 5. After CSV file upload successfully, we see succsess message in API response
 
-6. Retrieve employees data from the database using GET API
-    - http://localhost:5000/api/employees
+6. Retrieve cpap data from the database using GET API
+    - http://localhost:5000//api3/cpap
