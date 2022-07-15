@@ -30,7 +30,7 @@ const csvFilter = (req, file, cb) => {
 const upload = multer({ storage: storage, fileFilter: csvFilter });
 
 // Upload CSV file using Express Rest APIs
-app.post('/api/upload-csv-file', upload.single("file"), (req, res) => {
+app.post('/api3/upload-csv-file', upload.single("file"), (req, res) => {
     try {
         if (req.file == undefined) {
             return res.status(400).send({
@@ -52,7 +52,7 @@ app.post('/api/upload-csv-file', upload.single("file"), (req, res) => {
             .on("end", () => {
 
                 // Establish connection to the database
-                var url = "mongodb://localhost:27017/TestDb";
+                var url = "mongodb://localhost:27017/CPAP_csv";
                 var dbConn;
                 mongodb.MongoClient.connect(url, {
                     useUnifiedTopology: true,
@@ -61,7 +61,7 @@ app.post('/api/upload-csv-file', upload.single("file"), (req, res) => {
                     dbConn = client.db();
 
                     //inserting into the table "employees"
-                    var collectionName = 'employees';
+                    var collectionName = 'csv_patients';
                     var collection = dbConn.collection(collectionName);
                     collection.insertMany(csvData, (err, result) => {
                         if (err) console.log(err);
@@ -89,16 +89,16 @@ app.post('/api/upload-csv-file', upload.single("file"), (req, res) => {
 });
 
 // Fetch all employees
-app.get('/api/employees', function (req, res) {
+app.get('/api3/cpap', function (req, res) {
     // Establish connection to the database
-    var url = "mongodb://localhost:27017/TestDb";
+    var url = "mongodb://localhost:27017/CPAP_csv";
     var dbConn;
     mongodb.MongoClient.connect(url, {
         useUnifiedTopology: true,
     }).then((client) => {
         dbConn = client.db();
         
-        var collectionName = 'employees';
+        var collectionName = 'csv_patients';
         var collection = dbConn.collection(collectionName);
         collection.find().toArray(function(err, result) {
             if (err) throw err;
